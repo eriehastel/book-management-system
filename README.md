@@ -19,3 +19,6 @@ A PHP-based web application for managing book collections with user authenticati
 2. Import `database.sql` to MySQL
 3. Configure `includes/config.php`
 4. Deploy to your web server
+
+## Live Demo
+[View Demo](http://localhost/book-management-system/auth/login.php)•
