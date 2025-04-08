@@ -1,9 +1,10 @@
 <?php
+require_once '../includes/config.php'; 
 require_once '../includes/auth_functions.php';
 require_once '../includes/book_functions.php';
 
 if (!is_logged_in()) {
-    redirect('../auth/login.php');
+    redirect('/auth/login.php'); // Using absolute path with BASE_URL
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -13,9 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $recommendations = trim($_POST['recommendations']);
     
     if (add_book($_SESSION['user_id'], $title, $author, $year, $recommendations)) {
-        redirect('../dashboard.php');
+        $_SESSION['success_message'] = 'Book added successfully!';
+        redirect('/dashboard.php'); // Using absolute path
     } else {
-        $error = "Failed to add book";
+        $error = "Failed to add book. Please try again.";
     }
 }
 
